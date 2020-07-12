@@ -15,6 +15,7 @@ fetch(source).then(res => res.json()).then((data) => {
       description: d.gsx$description.$t,
       liveLink: d.gsx$livelink.$t,
       githubLink: d.gsx$githublink.$t,
+      category: d.gsx$category.$t,
    }
  });
   createCards(projects)
@@ -53,6 +54,7 @@ class Card {
     this.description = obj.description
     this.liveLink = obj.liveLink
     this.githubLink = obj.githubLink
+    this.category = obj.category
   }
 
   render() {
@@ -120,10 +122,17 @@ class CardContent {
   } // end of render()
 } // end of class CardContent
 
+// render and append cards to projects div
 function createCards(projects) {
   const projectDiv = document.querySelector('#projects')
+  const designDiv = document.querySelector('#projects-design')
   projects.forEach( obj => {
     let card = new Card(obj)
-    projectDiv.appendChild(card.render())
+    if (card.category == 'code') {
+      projectDiv.appendChild(card.render())
+    } else if (card.category == 'design') {
+      designDiv.appendChild(card.render())
+    }
+    
   })
 }
