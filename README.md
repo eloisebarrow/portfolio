@@ -101,3 +101,11 @@ function removeHamburgerStyles() {
 
 **ERROR**: Carousel images 'jumped' down each time a new one loaded.
 **RESOLUTION**: I had to add a max-height to each carousel images' container & to each container's parent container.
+
+## Deploy
+
+This project is hosted by Google Domains and I use [surge.sh](https://surge.sh/) for deployment. The CNAME file tells surge what domain to deploy to.
+
+To deploy:
+
+1. From root folder, run `surge`
